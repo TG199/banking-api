@@ -4,7 +4,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/TG199/banking-api/database"
-	"net/http"
 )
 
 func main() {
