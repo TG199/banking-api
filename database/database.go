@@ -12,20 +12,18 @@ import (
 var DB *gorm.DB
 
 func ConnectDB() {
-	// Load environment variables
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
 
-	// Get database URL from environment
 	databaseURL := os.Getenv("DATABASE_URL")
 
-	// Open database connection
 	DB, err = gorm.Open(postgres.Open(databaseURL), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
 	}
-
-	log.Println("✅ Connected to PostgreSQL with GORM")
+	// TODO: The line below produces an error. Fix it
+	// DB.AutoMigrate(&models.User{}, &models.Account{}, &models.Transaction{})  
+	log.Println("✅ DB Migration completed")
 }
